@@ -1,6 +1,6 @@
 # log4jeo
 
-FIXME
+Geolocation of log entries
 
 ## Prerequisites
 
