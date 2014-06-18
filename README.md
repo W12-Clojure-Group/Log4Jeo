@@ -34,3 +34,9 @@ To start a headless web server, run:
 ## License
 
 Copyright © 2014 FIXME
+
+##TODO
+
+* Create JSON based on Apache logs which include timestamp and IP address
+* POST JSON and extract values adding them into a map
+* GET enpoint that returns contents of the map

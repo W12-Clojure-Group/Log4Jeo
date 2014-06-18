@@ -6,6 +6,9 @@
             [compojure.route :as route]))
 
 (defroutes app-routes
+  (GET "/user/:id" [id]
+       (str "<h1>Hello user " id "</h1>"))
+  
   (GET "/" [] "Hello World")
   (GET "/sample-normal" [] (gen-samp-hist-png nil nil nil))
   (route/resources "/")
