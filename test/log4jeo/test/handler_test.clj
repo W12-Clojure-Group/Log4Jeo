@@ -1,4 +1,4 @@
-(ns log4jeo.test.handler
+(ns log4jeo.test.handler_test
   (:use clojure.test
         ring.mock.request  
         log4jeo.handler))
