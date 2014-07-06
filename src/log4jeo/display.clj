@@ -1,3 +1,5 @@
-(ns
-  ^{:author lyner01}
-  log4jeo.display)
+(ns log4jeo.display)
+
+(defn load-view [view]
+  (slurp (str "view/" view))
+)
