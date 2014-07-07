@@ -15,7 +15,7 @@
   (GET "/" [] (load-view "index.html"))
   (GET "/sample-normal" [] (gen-samp-hist-png nil nil nil))
   (GET "/convert/ipv4to6/:ipv4" [ipv4] (ipv4-to-ipv6 ipv4))
-
+  (GET "/sample-city-count" [] (gen-sample-city-count))
   (route/resources "/")
   (route/not-found "Not Found"))
 
