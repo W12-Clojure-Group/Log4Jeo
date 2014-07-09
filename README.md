@@ -54,4 +54,5 @@ Copyright © 2014 FIXME
 * GET enpoint that returns contents of the map - AL
 * Integrate database (Maxmind CSV) with GeoIP location - RL
 * Provide a lookup function for IP address to location - RL
-* D
+* Visualise map with :longitude(s), :latitude(s), (:city?) - NL  (google maps?)
+* Render statistics : Create some starting graphs that consume the data - UT
