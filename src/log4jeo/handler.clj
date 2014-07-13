@@ -4,7 +4,16 @@
         log4jeo.convert
         log4jeo.ingest
         log4jeo.display
-        [hiccup.middleware :only (wrap-base-url)])
+        log4jeo.charts
+        [hiccup.middleware :only (wrap-base-url)]
+        [ring.middleware.content-type :only
+         (wrap-content-type)]
+        [ring.middleware.file :only (wrap-file)]
+        [ring.middleware.file-info :only
+         (wrap-file-info)]
+        [ring.middleware.stacktrace :only
+         (wrap-stacktrace)]
+        [ring.util.response :only (redirect)])
   (:require [compojure.handler :as handler]
             [compojure.route :as route]))
 
@@ -16,8 +25,13 @@
   (GET "/sample-normal" [] (gen-samp-hist-png nil nil nil))
   (GET "/convert/ipv4to6/:ipv4" [ipv4] (ipv4-to-ipv6 ipv4))
   (GET "/sample-city-count" [] (gen-sample-city-count))
+  (GET "/access-log" [] (redirect "/data/access-log-data.json"))
+  (GET "/charts" [] (charts-home-page))
   (route/resources "/")
-  (route/not-found "Not Found"))
+  (route/not-found "Could not find it within Log4Jeo!"))
 
 (def app
-  (handler/site app-routes))
+  (-> (handler/site app-routes)
+      (wrap-file "resources")
+      (wrap-file-info)
+      (wrap-content-type)))
