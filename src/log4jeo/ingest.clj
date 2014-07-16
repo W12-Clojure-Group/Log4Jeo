@@ -1,20 +1,17 @@
-(ns log4jeo.ingest
-  (:require [clj-time.format :as tf]))
+(ns log4jeo.ingest)
 
-(defn get-date [log-data]
-  (def regex-pattern #"(\b\d{2}\/\w{3}\/\d{4}\:\d{2}\:\d{2}\:\d{2} \+\d{4}\b)")
-  (def groups (re-find regex-pattern log-data))
-  (def date-time (tf/parse (tf/formatter "dd/MMM/YYYY:HH:mm:ss Z") (nth groups 1)))
-  (tf/unparse (tf/formatter "YYYY-MM-dd'T'HH:mm:ss.000'Z'") date-time)
-)
+;;; test setup - delete
+(def filepath "/Users/lewisa29/Projects/Log4Jeo/test/fixtures/apache_log_head")
+;;;
 
-(defn get-ipv4-address [log-data]
-  (def regex-pattern #"(\b(\d{1,3}\.){3}\d{1,3}\b)")
-  (def groups (re-find regex-pattern log-data))
-  (str (nth groups 1))
-)
+(defn read-apache-log [filepath] (slurp filepath))
+(def apache-log (read-apache-log filepath))
+(def ip-address-regex #"\b(?:\d{1,3}\.){3}\d{1,3}\b")
+(defn return-ip [log] (re-find ip-address-regex log))
+
+(def timestamp-regex #"[ ]\[(.+)\][ ]")
+(defn return-timestamp [log] (clojure.string/trim (first (re-find timestamp-regex log))))
 
 (defn get-log-data-line [path-to-log-file line-number]
-  (nth (slurp path-to-log-file) line-number)
-)
+  (nth (slurp path-to-log-file) line-number))
 
