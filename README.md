@@ -49,10 +49,15 @@ Copyright © 2014 FIXME
 
 ##TODO
 
-* Create JSON based on Apache logs which include timestamp and IP address - AL
+* Merge timestamp and ip address functions- AL
+* Convert timestamp and ip to JSON - AL
+* Convert timestamp to epoch time - AL
 * POST JSON and extract values adding them into a map - AL
 * GET enpoint that returns contents of the map - AL
 * Integrate database (Maxmind CSV) with GeoIP location - RL
 * Provide a lookup function for IP address to location - RL
-* Visualise map with :longitude(s), :latitude(s), (:city?) - NL  (google maps?)
+* Visualise map with :longitude(s), :latitude(s), (:city?) - NL  (contour)
 * Render statistics : Create some starting graphs that consume the data - UT
+* Add instructions for lein cljs build - UT
+* Decide on which rending graphs - UT
+* Instructions on Datatomic install - RL
