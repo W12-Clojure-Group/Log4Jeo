@@ -47,6 +47,10 @@ To start a headless web server, run:
 
 Copyright © 2014 FIXME
 
+This product includes GeoLite2 data created by MaxMind, available from [http://www.maxmind.com][1]
+
+[1]: http://www.maxmind.com
+
 ##TODO
 
 * Merge timestamp and ip address functions- AL
@@ -61,3 +65,4 @@ Copyright © 2014 FIXME
 * Add instructions for lein cljs build - UT
 * Decide on which rending graphs - UT
 * Instructions on Datatomic install - RL
+* Get data from MaxMind urls and unzip as a periodic background process

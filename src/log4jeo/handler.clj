@@ -27,6 +27,7 @@
   (GET "/sample-city-count" [] (gen-sample-city-count))
   (GET "/access-log" [] (redirect "/data/access-log-data.json"))
   (GET "/charts" [] (charts-home-page))
+  (GET "/ingest/geo-ip-data" [] (ingest-geoip-data) )
   (route/resources "/")
   (route/not-found "Could not find it within Log4Jeo!"))
 

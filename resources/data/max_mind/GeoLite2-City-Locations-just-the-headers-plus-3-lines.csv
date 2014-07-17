@@ -1,0 +1,4 @@
+geoname_id,continent_code,continent_name,country_iso_code,country_name,subdivision_iso_code,subdivision_name,city_name,metro_code,time_zone
+1861060,AS,Asia,JP,Japan,,,,,Asia/Tokyo
+1809858,AS,Asia,CN,China,44,Guangdong,Guangzhou,,Asia/Shanghai
+1850147,AS,Asia,JP,Japan,13,"Tōkyō",Tokyo,,Asia/Tokyo

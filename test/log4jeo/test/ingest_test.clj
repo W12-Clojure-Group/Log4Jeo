@@ -12,3 +12,20 @@
 (deftest can-extract-ipv4-address-from-log-data []
   (is (= "212.58.246.190" (get-ipv4-address example-log-string)))
 )
+
+(deftest contract--headers-from-city-blocks-file-are-correct []
+  (def path-to-file "data/max_mind/GeoLite2-City-Blocks-just-the-headers-plus-3-lines.csv")
+
+;  (is (= ("network_start_ip"
+;           "network_prefix_length"
+;           "geoname_id"
+;           "registered_country_geoname_id"
+;           "represented_country_geoname_id"
+;           "postal_code"
+;           "latitude"
+;           "longitude"
+;           "is_anonymous_proxy"
+;           "is_satellite_provider")
+  (ingest-geoip-data path-to-file)
+;  ))
+  )

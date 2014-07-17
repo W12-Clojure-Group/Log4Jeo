@@ -1,0 +1,24 @@
+[
+  ;; ----- geo ip type -----
+    {:db/id #db/id[:db.part/db]
+      :db/ident :geoip/ip
+      :db/valueType :db.type/string
+      :db/cardinality :db.cardinality/one
+      :db/unique :db.unique/identity
+      :db/doc "An ipv6 address"
+      :db.install/_attribute :db.part/db}
+
+    {:db/id #db/id[:db.part/db]
+      :db/ident :geoip/latitude
+      :db/valueType :db.type/string
+      :db/cardinality :db.cardinality/many
+      :db/doc "Latitudal coordinate"
+      :db.install/_attribute :db.part/db}
+
+    {:db/id #db/id[:db.part/db]
+     :db/ident :geoip/longitude
+      :db/valueType :db.type/string
+      :db/cardinality :db.cardinality/many
+      :db/doc "Longitudinal coordinate"
+      :db.install/_attribute :db.part/db}
+]
