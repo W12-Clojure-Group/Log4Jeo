@@ -14,7 +14,7 @@
 )
 
 (deftest contract--headers-from-city-blocks-file-are-correct []
-  (def path-to-file "data/max_mind/GeoLite2-City-Blocks-just-the-headers-plus-3-lines.csv")
+  (def path-to-file "resources/data/max_mind/GeoLite2-City-Blocks-just-the-headers-plus-3-lines.csv")
 
 ;  (is (= ("network_start_ip"
 ;           "network_prefix_length"

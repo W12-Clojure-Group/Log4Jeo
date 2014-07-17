@@ -18,7 +18,7 @@
 (def geo-city-zip-url "http://geolite.maxmind.com/download/geoip/database/GeoLite2-City-CSV.zip")
 (def geo-country-zip-url "http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip")
 
-(def geo-ip-file "data/max_mind/GeoLite2-City-Blocks-just-the-headers-plus-3-lines.csv")
+(def geo-ip-file "resources/data/max_mind/GeoLite2-City-Blocks-just-the-headers-plus-3-lines.csv")
 ;(defn import-city-data-file []
 ;  (def path-to-file "data/GeoLite2-City-Blocks.csv")
 ;  (def file (slurp path-to-file))
