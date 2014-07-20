@@ -1,16 +1,18 @@
-(ns log4jeo.ingest)
+(ns log4jeo.ingest
+  (:require [log4jeo.db :as db])
+  ( :import [log4jeo.db geo-ip-data]))
 
 ;;; test setup - delete
-(def filepath "/Users/lewisa29/Projects/Log4Jeo/test/fixtures/apache_log_head")
+(def ingest-filepath "test/fixtures/apache_log_head")
 ;;;
 
-(defn read-apache-log [filepath] (slurp filepath))
-(def apache-log (read-apache-log filepath))
-(def ip-address-regex #"\b(?:\d{1,3}\.){3}\d{1,3}\b")
-(defn return-ip [log] (re-find ip-address-regex log))
+(defn read-apache-log [ingest-filepath] (slurp ingest-filepath))
+(def apache-log (read-apache-log ingest-filepath))
+(def ingest-ip-address-regex #"\b(?:\d{1,3}\.){3}\d{1,3}\b")
+(defn ingest-return-ip [log] (re-find ingest-ip-address-regex log))
 
-(def timestamp-regex #"[ ]\[(.+)\][ ]")
-(defn return-timestamp [log] (clojure.string/trim (first (re-find timestamp-regex log))))
+#_(def timestamp-regex #"[ ]\[(.+)\][ ]")
+#_(defn return-timestamp [log] (clojure.string/trim (first (re-find timestamp-regex log))))
 
 (defn get-log-data-line [path-to-log-file line-number]
   (nth (slurp path-to-log-file) line-number))
@@ -34,7 +36,7 @@
 
 (defn convert-geo-line-to-data-record [line]
   (def splitted (clojure.string/split line #","))
-  (geo-ip-data.
+  (geo-ip-data. 
     (nth splitted 3)
     (nth splitted 0)
     (nth splitted 6)
@@ -50,14 +52,14 @@
 
 (defn ingest-geoip-data []
   (try
-    (with-open [rdr (io/reader geo-ip-file)]
+    (with-open [rdr (clojure.java.io/reader geo-ip-file)]
 
       ;This line pulls out the headers
       ;TODO Should check headers match expected values
       (def headers (line-seq rdr))
 
       (doseq [line (line-seq rdr)]
-        (add-geo-ip-data (convert-geo-line-to-data-record line))
+        (db/add-geo-ip-data (convert-geo-line-to-data-record line))
         ))
     (str "done")
     (catch Exception e

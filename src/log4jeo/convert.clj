@@ -7,11 +7,11 @@
   (str "::ffff:" (nth i 0) "." (nth i 1) "." (nth i 2) "." (nth i 3)))
 
 
-(def filepath "/Users/lewisa29/Projects/Log4Jeo/test/fixtures/apache_log_head")
+(def filepath "test/fixtures/apache_log_head")
 (def log (slurp filepath))
 (def ip-address-regex
  #"(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])")
-(def return-ip (re-find ip-address-reg-ex log))
+(def return-ip (re-find ip-address-regex log))
 (def timestamp-regex #"[ ]\[(.+)\][ ]")
 (def return-timestamp (first (re-find timestamp-regex log)))
 
