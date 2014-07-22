@@ -43,6 +43,9 @@ To start a headless web server, run:
 
     lein ring server-headless
 
+To kick off auto-compilation of clojurescript code, in a separate terminal or screen, run:
+    lein cljsbuild auto
+    
 ## License
 
 Copyright © 2014 FIXME
@@ -53,16 +56,16 @@ This product includes GeoLite2 data created by MaxMind, available from [http://w
 
 ##TODO
 
-* Merge timestamp and ip address functions- AL
-* Convert timestamp and ip to JSON - AL
-* Convert timestamp to epoch time - AL
-* POST JSON and extract values adding them into a map - AL
-* GET enpoint that returns contents of the map - AL
-* Integrate database (Maxmind CSV) with GeoIP location - RL
-* Provide a lookup function for IP address to location - RL
-* Visualise map with :longitude(s), :latitude(s), (:city?) - NL  (contour)
-* Render statistics : Create some starting graphs that consume the data - UT
-* Add instructions for lein cljs build - UT
-* Decide on which rending graphs - UT
-* Instructions on Datatomic install - RL
-* Get data from MaxMind urls and unzip as a periodic background process
+- Merge timestamp and ip address functions- AL
+- Convert timestamp and ip to JSON - AL
+- Convert timestamp to epoch time - AL
+- POST JSON and extract values adding them into a map - AL
+- GET enpoint that returns contents of the map - AL
+- Integrate database (Maxmind CSV) with GeoIP location - RL
+- Provide a lookup function for IP address to location - RL
+- Visualise map with :longitude(s), :latitude(s), (:city?) - NL  (contour)
+- Render statistics : Create some starting graphs that consume the data - UT
+- [x] Add instructions for lein cljs build - UT 
+- [x] Decide on which rendering graphs - UT - at this stage incanter with memoization most straightforward
+- Instructions on Datatomic install - RL
+- Get data from MaxMind urls and unzip as a periodic background process
