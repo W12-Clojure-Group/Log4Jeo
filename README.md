@@ -56,11 +56,11 @@ This product includes GeoLite2 data created by MaxMind, available from [http://w
 
 ##TODO
 
-- [ ] Merge timestamp and ip address functions- AL
+- [x] Merge timestamp and ip address functions- AL
 - [ ] Convert timestamp and ip to JSON - AL
 - [ ] Convert timestamp to epoch time - AL
-- [ ] POST JSON and extract values adding them into a map - AL
-- [ ] GET enpoint that returns contents of the map - AL
+- [ ] Extract all long and lats from Apache log and convert them to JSON - AL
+- [ ] GET endpoint JSON with relevant data from Apache logs - AL
 - [ ] Integrate database (Maxmind CSV) with GeoIP location - RL
 - [ ] Provide a lookup function for IP address to location - RL
 - [ ] Visualise map with :longitude(s), :latitude(s), (:city?) - NL  (contour)
@@ -69,3 +69,4 @@ This product includes GeoLite2 data created by MaxMind, available from [http://w
 - [x] Decide on which rendering graphs - UT - at this stage incanter with memoization most straightforward
 - [ ] Instructions on Datatomic install - RL
 - [ ] Get data from MaxMind urls and unzip as a periodic background process
+- [ ] 
