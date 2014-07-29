@@ -4,3 +4,5 @@ http://increasinglyfunctional.com/2013/12/02/google-maps-and-clojurescript/
 http://hbg-crime.org/index.html
 https://github.com/joshuamiller/hbg-crime.git
 
+from https://github.com/jtfmumm/cljs-exnihilo
+lein new cljs-exnihilo new-project-name
