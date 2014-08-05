@@ -6,3 +6,15 @@ https://github.com/joshuamiller/hbg-crime.git
 
 from https://github.com/jtfmumm/cljs-exnihilo
 lein new cljs-exnihilo new-project-name
+
+lein cljsbuild sample
+
+http://gorilla-repl.org/
+
+https://swannodette.github.io/2013/11/07/clojurescript-101/
+
+https://github.com/swannodette/lt-cljs-tutorial
+
+https://github.com/magomimmo/modern-cljs/tree/master/cljs-tutorial
+
+https://anothercrazyplace.wordpress.com/tag/clojurescript/
