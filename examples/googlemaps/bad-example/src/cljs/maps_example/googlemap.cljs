@@ -11,4 +11,4 @@
   (let [map-opts (clj->js {"center" (google.maps.LatLng. lat lon)
                            "zoom" 13
                            "mapTypeId" "roadmap"})]
-    (set! *map* (google.maps.Map. document.getElementById("map") map-opts))))
+    (set! *map* (google.maps.Map. (.getElementById js/document "map") map-opts))))
