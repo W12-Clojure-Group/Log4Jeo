@@ -16,7 +16,7 @@
            [:link {:rel "stylesheet" :href "css/foundation.min.css"}]
            [:link {:rel "stylesheet" :href "css/foundation.css"}]
            [:link {:rel "stylesheet" :href "css/application.css"}]
-           [:link {:rel "stylesheet" :href "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"}]
+           [:link {:rel "stylesheet" :href "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"}]
            [:script {:src "js/vendor/custom.modernizr.js" :type "text/javascript"}]
            [:script {:src "http://codeorigin.jquery.com/jquery-2.0.3.min.js" :type "text/javascript"}]
            [:script {:src "https://maps.googleapis.com/maps/api/js?v=3.exp" :type "text/javascript"}]
@@ -25,6 +25,7 @@
 
 (defn view-content []
   (view-layout
+       [:h1 {:class "top-bar"} [:a {:href "/index.html" :class "name"} "Maps Example"]]
        [:div {:class "small-12 columns" :id "map"} ]
        [:script {:src "map.js" :type "text/javascript"}]
        [:script {:type "text/javascript"} "maps_example.googlemap.create_map();" ]
