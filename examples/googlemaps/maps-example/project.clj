@@ -5,17 +5,18 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [prismatic/dommy "0.1.2"]
-                 [environ "0.4.0"]
                  [org.clojure/clojurescript "0.0-2030"]
-                 [com.keminglabs/c2 "0.2.3-SNAPSHOT"]
+                 [compojure "1.1.5"]
+                 [jayq "2.4.0"]
+                 [hiccup "1.0.4"]
                  ]
   :source-paths ["src/clj"]
-  :plugins [[lein-cljsbuild "0.3.4"]]
+  :plugins [[lein-cljsbuild "0.3.4"]
+            [lein-ring "0.8.7"]]
 
   :cljsbuild {
-     :builds [
-                {
+     :builds {
+              :main  {
                  :source-paths ["src/cljs"],
                  :compiler {
                     :output-to "resources/public/map.js",
@@ -23,7 +24,10 @@
                     :optimizations :whitespace
                     }
                 }
-             ]
+             }
     }
+
+  :main maps-example.server
+  :ring {:handler maps-example.server/app}
 
   )
