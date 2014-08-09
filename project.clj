@@ -2,6 +2,7 @@
   :description ""
   :url "https://github.com/W12-Clojure-Group/Log4Jeo"
   :dependencies [[org.clojure/clojure "1.6.0"]
+                 [org.clojure/clojurescript "0.0-2197"]
                  [compojure "1.1.8"]
                  [hiccup "1.0.5"]
                  [incanter "1.5.5"]
@@ -23,10 +24,17 @@
         }
    }
   :datomic {:schemas ["resources/schemas" ["geo-ip-schema.edn" ]]}
-  :cljsbuild {:builds
-              [{:source-paths ["src-cljs"],
-                :compiler
-                {:pretty-print true,
-                 :output-to "resources/js/script.js",
-                 :optimizations :whitespace}}]}
+  :cljsbuild {
+          :builds {
+               :main {
+                :source-paths ["src-cljs"],
+                :compiler {
+                   :pretty-print true,
+                   :output-to "resources/script.js",
+                   :externs ["google_maps_api_v3.js" "jquery-1.9.js"],
+                   :optimizations :whitespace
+                   }
+                 }
+             }
+      }
   )

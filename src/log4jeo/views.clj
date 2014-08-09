@@ -42,3 +42,31 @@
        :headers {"Content-Type" "image/png"}
        :body in-stream})
 )
+
+(defn map-layout [& content]
+  (html
+      [:head
+           [:meta {:http-equiv "Content-type"  :name "viewport"
+                        :content "text/html; charset=utf-8"}]
+           [:title "Maps Example"]
+           (include-css "css/normalize.css")
+           (include-css "css/foundation.min.css")
+           (include-css "css/foundation.css")
+           (include-css "css/application.css")
+           [:link {:rel "stylesheet" :href "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"}]
+           [:script {:src "js/vendor/custom.modernizr.js" :type "text/javascript"}]
+           [:script {:src "http://codeorigin.jquery.com/jquery-2.0.3.min.js" :type "text/javascript"}]
+           [:script {:src "https://maps.googleapis.com/maps/api/js?v=3.exp" :type "text/javascript"}]
+      ]
+      [:body content]
+  )
+)
+
+(defn gen-maps-example []
+  (map-layout
+       [:h1 {:class "top-bar"} [:a {:href "/index.html" :class "name"} "Maps Example"]]
+       [:div {:class "small-12 columns" :id "map"} ]
+       (include-js "script.js")
+       [:script {:type "text/javascript"} "log4jeo.googlemap.create_map();" ]
+    )
+)
