@@ -1,0 +1,62 @@
+a.download {
+    color: #CCC;
+    float: right;
+    display: inline;
+    margin-top: 8px;
+    margin-right: 6px;
+}
+a.download:visited {
+    color: #CCC;
+}
+a.download:hover {
+    color: #EEE;
+}
+a.date {
+    color: #CCC;
+    white-space: nowrap;
+}
+a.date:visited {
+    color: #CCC;
+}
+a.date.highlighted {
+    color: yellow;
+}
+a.date.highlighted:visited {
+    color: yellow;
+}
+div#map {
+    border: 2px solid #CCC;
+    min-height: 300px;
+    margin-top: 3em;
+    margin-bottom: 1em;
+}
+nav.top-bar {
+    margin-bottom: 1em;
+}
+a.date-change {
+    height: 30px;
+    background-color: #2ba6cb;
+    color: white;
+    border: 2px solid white;
+    padding: 4px;
+    width: 385px;
+    display: block;
+}
+table {
+    width: 90%
+}
+
+// Fix for Google Maps stuff via https://github.com/zurb/foundation/issues/2462
+#map *, #map *:before, #map *:after {
+    -moz-box-sizing: content-box!important;
+    -webkit-box-sizing: content-box!important;
+    box-sizing: content-box!important;  
+}
+#map img {
+    max-width: none;
+}
+#map label {
+    width: auto;
+    display: inline;
+}
+
