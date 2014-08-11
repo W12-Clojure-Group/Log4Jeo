@@ -2,7 +2,7 @@
   :description ""
   :url "https://github.com/W12-Clojure-Group/Log4Jeo"
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2197"]
+                 [org.clojure/clojurescript "0.0-2261"]
                  [compojure "1.1.8"]
                  [hiccup "1.0.5"]
                  [incanter "1.5.5"]
@@ -12,6 +12,7 @@
   :plugins [[lein-ring "0.8.10"]
             [lein-datomic "0.2.0"]
             [lein-cljsbuild "1.0.3"]]
+  :hooks [leiningen.cljsbuild]
   :ring {:handler log4jeo.handler/app}
   :profiles {
       :dev {
