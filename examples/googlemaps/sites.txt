@@ -18,3 +18,13 @@ https://github.com/swannodette/lt-cljs-tutorial
 https://github.com/magomimmo/modern-cljs/tree/master/cljs-tutorial
 
 https://anothercrazyplace.wordpress.com/tag/clojurescript/
+
+http://squirrel.pl/blog/2013/01/02/get-started-with-clojurescript-with-leiningen-templates/
+
+# This one seems to be better than the cljs-exnihilo template
+lein new cljs-kickoff my-project
+cd my-project
+lein ring server
+or
+lein run
+
