@@ -5,6 +5,7 @@ version="0.9.4752"
 function has_users_dot_lein_profile_been_updated() { datomic_install_location=${1}
 	datomic_count=`cat ~/.lein/profiles.clj | grep -c ":datomic"`
 	install_location_count=`cat ~/.lein/profiles.clj | grep -c "${datomic_install_location}"`
+	echo "install location: ${datomic_install_location}"
 	if [ ${datomic_count} -eq 1 ] && [ ${install_location_count} -eq 1 ]; then
 		echo "y"
 	else
@@ -13,11 +14,13 @@ function has_users_dot_lein_profile_been_updated() { datomic_install_location=${
 }
 
 working_dir=`pwd`
+lib_dir="lib"
+# TODO Is datomic of version ${version} already installed?
 
-mkdir -p libs
+mkdir -p ${lib_dir}
 
-curl -Lk https://my.datomic.com/downloads/free/${version} -o libs/datomic-free-${version}.zip
-cd libs
+curl -Lk https://my.datomic.com/downloads/free/${version} -o ${lib_dir}/datomic-free-${version}.zip
+cd ${lib_dir}
 unzip datomic-free-${version}.zip
 cd ..
 
@@ -32,23 +35,41 @@ if [ ! -e ${datomic_dir} ]; then
 		echo "failed to make that directory, sorry!"
 		return -2
 	fi
-	sudo mv libs/datomic-free-${version} ${datomic_dir}/datomic-free-${version}
+	sudo mv ${lib_dir}/datomic-free-${version} ${datomic_dir}/datomic-free-${version}
 	cd ${datomic_dir}
 	sudo ln -s ${datomic_dir}/datomic-free-${version} current
 else
-	mv libs/datomic-free-${version} ${datomic_dir}/datomic-free-${version}
+	mv ${lib_dir}/datomic-free-${version} ${datomic_dir}/datomic-free-${version}
 	cd ${datomic_dir}
-	ln -s ${datomic_dir}/datomic-free-${version} current
+	ln -s datomic-free-${version} current
 fi
 
-lein_profiles_set_up=`has_users_dot_lein_profile_been_updated /usr/share/datomic/current`
+if [ ! -e ~/.lein/profiles.clj ]; then
+    mkdir -p ~/.lein
+    touch ~/.lein/profiles.clj
+    echo "{" >> ~/.lein/profiles.clj
+    echo "    :user {" >> ~/.lein/profiles.clj
+    echo "        :datomic {" >> ~/.lein/profiles.clj
+    echo "            :install-location \"${datomic_dir}\"" >> ~/.lein/profiles.clj
+    echo "        }" >> ~/.lein/profiles.clj
+    echo "    }" >> ~/.lein/profiles.clj
+    echo "}" >> ~/.lein/profiles.clj
+fi
+
+lein_profiles_set_up=`has_users_dot_lein_profile_been_updated ${datomic_dir}/current`
 
 while [ "${lein_profiles_set_up}" == "n" ]; do
+    echo "About to update .lein/profiles.clj"
+
 	echo "in the file: ~/.lein/profiles.clj"
 	echo "add this line:"
 	echo "    :datomic { :install-location \"${datomic_dir}\" }"
 	echo "inside the :user {} section"
-	lein_profiles_set_up=`has_users_dot_lein_profile_been_updated /usr/share/datomic/current`
+	lein_profiles_set_up=`has_users_dot_lein_profile_been_updated ${datomic_dir}/current`
+	if [ "n" == "${lein_profiles_set_up}" ]; then
+	    echo "Hit enter once you've edited it?"
+        read line
+	fi
 done
 
 #jar="~/.m2/repository/com/datomic/datomic-free/${version}/datomic-free-${version}.jar"
