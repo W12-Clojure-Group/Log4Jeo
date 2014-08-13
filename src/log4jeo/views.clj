@@ -44,10 +44,10 @@
 )
 
 (defn map-layout [& content]
-  (html
+  (html5
       [:head
-           [:meta {:http-equiv "Content-type"  :name "viewport"
-                        :content "text/html; charset=utf-8"}]
+           [:meta {:http-equiv "Content-type"
+                   :content "text/html; charset=utf-8"}]
            [:title "Maps Example"]
            (include-css "css/normalize.css")
            (include-css "css/foundation.min.css")
