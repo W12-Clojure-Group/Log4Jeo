@@ -38,7 +38,7 @@
   (println (str "city: " (:city-id data-map)))
   )
 
-(defn ingest-geoip-data []
+(defn ingest-geoip-data [geo-ip-file]
   (try
     (with-open [rdr (clojure.java.io/reader geo-ip-file)]
 
