@@ -12,6 +12,7 @@
                  ]
   :plugins [[lein-ring "0.8.11"]
             [lein-datomic "0.2.0"]
+            [lein-gorilla  "0.3.2"]
             [lein-cljsbuild "1.0.3"]]
   :hooks [leiningen.cljsbuild]
   :ring {:handler log4jeo.handler/app}
