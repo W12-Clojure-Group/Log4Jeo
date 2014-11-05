@@ -9,6 +9,7 @@
                  [clj-time "0.7.0"]
                  [com.datomic/datomic-free "0.9.4752"]
                  [ring/ring-core "1.3.0"]
+                 [org.clojure/data.json "0.2.5"]
                  ]
   :plugins [[lein-ring "0.8.11"]
             [lein-datomic "0.2.0"]

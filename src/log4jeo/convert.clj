@@ -1,5 +1,6 @@
 (ns log4jeo.convert
-  (:require [clojure.string :as string]))
+  (:require [clojure.string :as string] [clojure.data.json :as json])
+)
 
 (defn ipv4-to-ipv6 [ipv4]
   (def i (map #(Integer/parseInt %)
@@ -14,15 +15,5 @@
         ip-address (re-find ip-address-regex log)
         timestamp-regex #"\[(.+)\]"
         timestamp (string/trim (first (re-find timestamp-regex log)))]
-    {:ip ip-address :timestamp timestamp}))
-
-
-
-
-
-
-
-
-
-
+    (json/write-str {:ip ip-address :timestamp timestamp})))
 
